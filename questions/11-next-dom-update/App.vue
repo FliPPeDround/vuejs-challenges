@@ -2,6 +2,8 @@
 import { ref } from "vue"
 
 const count = ref(0)
+const counter = ref(null)
+const textContent = ref("")
 
 function increment() {
   count.value++
@@ -11,12 +13,13 @@ function increment() {
    * Make the output be true
   */
 
-  console.log(+document.getElementById("counter").textContent === 1)
+  textContent.value = counter.value.textContent
+  console.log(+textContent.value === 1)
 }
 </script>
 
 <template>
-  <button id="counter" @click="increment">
+  <button ref="counter" @click="increment">
     {{ count }}
   </button>
 </template>
